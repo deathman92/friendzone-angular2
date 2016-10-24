@@ -15,7 +15,8 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "styles.scss"
+        "styles.scss",
+        "fz-app-theme.scss"
       ],
       "scripts": [],
       "environments": {

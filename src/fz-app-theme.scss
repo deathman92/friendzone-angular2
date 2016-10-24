@@ -1,0 +1,10 @@
+@import '~@angular/material/core/theming/all-theme';
+
+@include md-core();
+
+$primary: md-palette($md-green);
+$accent:  md-palette($md-deep-orange, A200, A100, A400);
+
+$fz-app-theme: md-light-theme($primary, $accent);
+
+@include angular-material-theme($fz-app-theme);

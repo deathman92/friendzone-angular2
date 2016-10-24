@@ -1,0 +1,14 @@
+<md-card>
+  <md-toolbar class="md-primary">
+    <span>Sign in</span>
+  </md-toolbar>
+  <md-card-content>
+    <form>
+      <div style="display: flex; flex-direction: column;">
+        <md-input placeholder="Username"></md-input>
+        <md-input placeholder="Password" type="password"></md-input>
+        <button md-raised-button class="md-accent" (click)="signIn($event)">Sign in</button>
+      </div>
+    </form>
+  </md-card-content>
+</md-card>

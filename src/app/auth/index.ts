@@ -1,3 +1,4 @@
-export * from './auth.guard.ts';
-export * from './auth.service.ts';
-export * from './user.model.ts';
+export * from './auth.guard';
+export * from './auth.service';
+export * from './user.model';
+export * from './auth.module';
