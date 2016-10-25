@@ -1,13 +1,13 @@
 <md-card>
-  <md-toolbar class="md-primary">
-    <span>Sign in</span>
-  </md-toolbar>
   <md-card-content>
-    <form role="form" (submit)="signIn($event, username.value, password.value)">
+    <form role="form" (submit)="signIn($event, email.value, password.value)">
       <div style="display: flex; flex-direction: column;">
-        <md-input #username placeholder="Username"></md-input>
+        <md-input #email placeholder="Email"></md-input>
         <md-input #password placeholder="Password" type="password"></md-input>
-        <button md-raised-button class="md-accent" type="submit">Sign in</button>
+        <div style="display: flex; flex-direction: row;">
+          <button md-raised-button class="md-primary" type="submit" style="text-transform: uppercase; width: 120px; height: 40px; margin-right: 10px;">Sign in</button>
+          <a md-button class="md-accent" target="_blank" href="#" style="height: 40px; line-height: 40px;">Forgot password?</a>
+        </div>
       </div>
     </form>
   </md-card-content>

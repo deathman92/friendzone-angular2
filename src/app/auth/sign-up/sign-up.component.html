@@ -1,14 +1,17 @@
 <md-card>
-  <md-toolbar class="md-primary">
-    <span>SIGN UP</span>
-  </md-toolbar>
+  <md-card-title-group style="justify-content: center;">
+    <md-card-title style="width: 100%; text-align: center;">Never signed up?</md-card-title>
+    <md-card-subtitle style="width: 100%; text-align: center;">Sign up now!</md-card-subtitle>
+  </md-card-title-group>
   <md-card-content>
     <form>
       <div style="display: flex; flex-direction: column;">
-        <md-input placeholder="Username"></md-input>
+        <md-input placeholder="Email" type="email"></md-input>
+        <md-input placeholder="First name"></md-input>
+        <md-input placeholder="Last name"></md-input>
         <md-input placeholder="Password" type="password"></md-input>
         <md-input placeholder="Confirm password" type="password"></md-input>
-        <button md-raised-button class="md-accent" (click)="signUp($event)">Sign Up</button>
+        <button md-raised-button class="md-primary" (click)="signUp($event)" style="text-transform: uppercase">Sign Up</button>
       </div>
     </form>
   </md-card-content>

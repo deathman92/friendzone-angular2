@@ -34,7 +34,7 @@ export let fakeBackendProvider = {
 
         // fake users api endpoint
         if (connection.request.url.endsWith('/api/users') && connection.request.method === RequestMethod.Get) {
-          // check for auth token in header and return test user if valid
+          // check for auth token in header and return test use if valid
           if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
             connection.mockRespond(new Response(
               new ResponseOptions({ status: 200, body: [testUser] })

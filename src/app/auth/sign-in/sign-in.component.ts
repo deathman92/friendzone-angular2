@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router }            from "@angular/router";
+import { Router }            from '@angular/router';
 
-import { AuthService } from "../auth.service";
-import {error} from "util";
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'fz-sign-in',
@@ -34,7 +33,7 @@ export class SignInComponent implements OnInit {
         },
         error => {
             alert(error.text());
-            console.error(error.text())
+            console.error(error.text());
         });
   }
 
