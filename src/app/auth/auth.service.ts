@@ -4,6 +4,7 @@ import { Observable }      from 'rxjs';
 import { tokenNotExpired } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 
+const fakeBackendUrl = '/api/authenticate';
 const tokenName = 'id_token';
 
 @Injectable()
@@ -13,7 +14,7 @@ export class AuthService {
   constructor(private http: Http) {}
 
   login(username, password): Observable<boolean> {
-    return this.http.post('/api/authenticate', JSON.stringify({ username: username, password: password }))
+    return this.http.post(fakeBackendUrl, JSON.stringify({ username: username, password: password }))
       .map((response: Response) => {
         let token = response.json() && response.json().token;
         if (token) {

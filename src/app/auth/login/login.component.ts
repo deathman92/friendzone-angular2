@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'fz-login',
@@ -8,10 +7,7 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  username: string;
-  password: string;
-
-  constructor(private authService: AuthService) { }
+  constructor() { }
 
   ngOnInit() {
   }

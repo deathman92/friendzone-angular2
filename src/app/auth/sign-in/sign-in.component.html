@@ -3,11 +3,11 @@
     <span>Sign in</span>
   </md-toolbar>
   <md-card-content>
-    <form>
+    <form role="form" (submit)="signIn($event, username.value, password.value)">
       <div style="display: flex; flex-direction: column;">
-        <md-input placeholder="Username"></md-input>
-        <md-input placeholder="Password" type="password"></md-input>
-        <button md-raised-button class="md-accent" (click)="signIn($event)">Sign in</button>
+        <md-input #username placeholder="Username"></md-input>
+        <md-input #password placeholder="Password" type="password"></md-input>
+        <button md-raised-button class="md-accent" type="submit">Sign in</button>
       </div>
     </form>
   </md-card-content>

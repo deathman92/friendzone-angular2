@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router }            from "@angular/router";
+
+import { AuthService } from "../auth.service";
+import {error} from "util";
 
 @Component({
   selector: 'fz-sign-in',
@@ -7,13 +11,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignInComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    this.authService.logout();
   }
 
-  signIn(event): void {
+  signIn(event, username: string, password: string): void {
     event.preventDefault();
+
+    this.authService.login(username, password)
+      .subscribe(
+        response => {
+          if (response === true) {
+            this.router.navigate(['/home']);
+          } else {
+            console.log('User are not logged in');
+          }
+        },
+        error => {
+            alert(error.text());
+            console.error(error.text())
+        });
   }
 
 }
