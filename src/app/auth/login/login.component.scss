@@ -2,7 +2,12 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
+
+  .logo {
+    display: flex;
+    margin: auto;
+  }
 
   .auth-content {
     display: flex;

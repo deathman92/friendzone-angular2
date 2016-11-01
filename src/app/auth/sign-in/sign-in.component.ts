@@ -37,4 +37,8 @@ export class SignInComponent implements OnInit {
         });
   }
 
+  forget(event): void {
+    event.preventDefault();
+  }
+
 }

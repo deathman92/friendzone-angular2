@@ -1,3 +1,11 @@
-.app-toolbar-filler {
-  flex: 1 1 auto;
+@import '~@angular/material/core/theming/theming';
+@import 'src/fz-app-theme.scss';
+
+.fz-header {
+  background: md-color($primary, 700);
+  color: md-contrast($primary, 700);
+
+  .app-toolbar-filler {
+    flex: 1 1 auto;
+  }
 }

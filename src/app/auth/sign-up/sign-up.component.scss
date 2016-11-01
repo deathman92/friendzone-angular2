@@ -1,8 +1,13 @@
 md-card {
-  margin: 20px;
-  width: 360px;
+  margin-top: 20px;
+  width: 320px;
 
   md-card-content {
     font-size: 16px;
+
+    .fz-input {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
   }
 }
