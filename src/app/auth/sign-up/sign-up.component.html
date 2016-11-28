@@ -4,13 +4,13 @@
     <md-card-subtitle style="width: 100%; text-align: center;">Sign up now!</md-card-subtitle>
   </md-card-title-group>
   <md-card-content>
-    <form>
+    <form role="form">
       <div style="display: flex; flex-direction: column;">
-        <md-input placeholder="Email" type="email" class="fz-input"></md-input>
-        <md-input placeholder="First name" class="fz-input"></md-input>
-        <md-input placeholder="Last name" class="fz-input"></md-input>
-        <md-input placeholder="Password" type="password" class="fz-input"></md-input>
-        <md-input placeholder="Confirm password" type="password" class="fz-input"></md-input>
+        <md-input placeholder="Email" type="email" name="email" [(ngModel)]="credentials.email" class="fz-input"></md-input>
+        <md-input placeholder="First name" name="firstname" [(ngModel)]="credentials.firstname" class="fz-input"></md-input>
+        <md-input placeholder="Last name" name="lastname" [(ngModel)]="credentials.lastname" class="fz-input"></md-input>
+        <md-input placeholder="Password" type="password" name="password" [(ngModel)]="credentials.password" class="fz-input"></md-input>
+        <md-input placeholder="Confirm password" type="password" name="confirmation" [(ngModel)]="credentials.confirmation" class="fz-input"></md-input>
         <button md-raised-button class="md-primary" (click)="signUp($event)" style="text-transform: uppercase">Sign Up</button>
       </div>
     </form>

@@ -19,14 +19,14 @@ export class SignInComponent implements OnInit {
     this.authService.logout();
   }
 
-  signIn(event, username: string, password: string): void {
+  signIn(event, email: string, password: string): void {
     event.preventDefault();
 
-    this.authService.login(username, password)
+    this.authService.login(email, password)
       .subscribe(
         response => {
           if (response === true) {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/userprofile']);
           } else {
             console.log('User are not logged in');
           }

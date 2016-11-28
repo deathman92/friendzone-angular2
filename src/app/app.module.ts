@@ -5,15 +5,14 @@ import { FormsModule }    from '@angular/forms';
 import { HttpModule }     from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { NgModule }       from '@angular/core';
+import { UserProfileModule } from "./user-profile";
 
 import { AppComponent }     from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent }    from './home';
+import { AppRoutingModule }  from './app-routing.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent
+    AppComponent
   ],
   imports: [
     AuthModule,
@@ -21,7 +20,8 @@ import { HomeComponent }    from './home';
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    UserProfileModule
   ],
   providers: [
     AUTH_PROVIDERS

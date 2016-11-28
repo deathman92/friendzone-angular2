@@ -5,7 +5,6 @@ import { TestBed, async }   from '@angular/core/testing';
 
 import { AppComponent }     from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent }    from './home';
 
 describe('App: FriendzoneAngular2', () => {
   beforeEach(() => {
@@ -15,8 +14,7 @@ describe('App: FriendzoneAngular2', () => {
         MaterialModule.forRoot()
       ],
       declarations: [
-        AppComponent,
-        HomeComponent
+        AppComponent
       ],
     });
   });

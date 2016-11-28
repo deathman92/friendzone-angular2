@@ -12,6 +12,7 @@ import { fakeBackendProvider } from "./fake-backend.provider";
 import { LoginComponent }      from './login';
 import { SignInComponent }     from './sign-in';
 import { SignUpComponent }     from './sign-up';
+import { SuccessSignUpComponent } from './success-sign-up/success-sign-up.component';
 
 // imports for mocking back-end
 
@@ -26,7 +27,8 @@ import { SignUpComponent }     from './sign-up';
   declarations: [
     LoginComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    SuccessSignUpComponent
   ],
   providers: [
     AuthService,
