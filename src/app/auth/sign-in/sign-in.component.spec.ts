@@ -11,14 +11,14 @@ import { AuthService }     from '../auth.service';
 describe('Component: SignIn', () => {
 
   class RouterStub {
-    navigate(commands: any[]): string { return commands[0]; }
+    navigateByUrl(url: string): string { return url; }
   }
 
   let fixture: ComponentFixture<SignInComponent>;
   let comp: SignInComponent;
   let authServiceStub = {
-    login: true,
-    logout: () => { localStorage.removeItem('id_token'); },
+    login: (email: string, password: string) => { return Observable.of(true); },
+    logout: () => { localStorage.removeItem('id_token'); }
   };
 
   beforeEach(async(() => {
@@ -46,5 +46,17 @@ describe('Component: SignIn', () => {
     expect(localStorage.getItem('id_token')).toBe(null);
   });
 
-  it('should redirect after login')
+  it('should navigate to userprofile after login',
+    inject([Router], (router: Router) => {
+
+      let spy = spyOn(router, 'navigateByUrl');
+
+      fixture.nativeElement.querySelector('button').click();
+
+      let navParams = spy.calls.first().args[0];
+
+      expect(navParams).toBe('/userprofile');
+
+    })
+  );
 });

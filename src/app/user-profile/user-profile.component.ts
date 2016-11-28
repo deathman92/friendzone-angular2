@@ -12,14 +12,11 @@ export class UserProfileComponent implements OnInit {
     lastname: 'comp',
     fotourl: null
   };
-  public loading = false;
 
   constructor(private userProfileService: UserProfileService) { }
 
   ngOnInit() {
-    this.loading = true;
     this.getUserProfile();
-    this.loading = false;
   }
 
   private getUserProfile(): void {

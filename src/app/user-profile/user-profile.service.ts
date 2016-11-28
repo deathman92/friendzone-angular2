@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Response }  from '@angular/http';
-import { Observable }      from 'rxjs';
-import { AuthHttp} from 'angular2-jwt';
+import { Injectable }  from '@angular/core';
+import { Response }    from '@angular/http';
+import { Observable }  from 'rxjs';
+import { AuthHttp}     from 'angular2-jwt';
 import { UserProfile } from './user-profile.model';
 import 'rxjs/add/operator/map';
 

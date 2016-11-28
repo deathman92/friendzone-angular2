@@ -28,7 +28,7 @@ export class SignInComponent implements OnInit {
       .subscribe(
         response => {
           if (response === true) {
-            this.router.navigate(['/userprofile']);
+            this.router.navigateByUrl('/userprofile');
           } else {
             console.log('User are not logged in');
           }
