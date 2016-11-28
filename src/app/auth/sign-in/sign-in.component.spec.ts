@@ -18,7 +18,7 @@ describe('Component: SignIn', () => {
   let comp: SignInComponent;
   let authServiceStub = {
     login: true,
-    logout: () => { localStorage.removeItem('id_token'); }
+    logout: () => { localStorage.removeItem('id_token'); },
   };
 
   beforeEach(async(() => {
@@ -45,4 +45,6 @@ describe('Component: SignIn', () => {
 
     expect(localStorage.getItem('id_token')).toBe(null);
   });
+
+  it('should redirect after login')
 });

@@ -11,7 +11,6 @@ const tokenName = 'id_token';
 
 @Injectable()
 export class AuthService {
-  public token: string;
 
   constructor(private http: Http) {}
 
@@ -31,7 +30,7 @@ export class AuthService {
   register(credentials): Observable<boolean> {
     return this.http.post(registerUrl, {credentials: credentials})
       .map((response: Response) => {
-        return response.status == 201;
+        return (response.status === 201);
       });
   }
 

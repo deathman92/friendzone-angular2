@@ -9,6 +9,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
+  public loading = false;
 
   constructor(
     private authService: AuthService,
@@ -20,6 +21,7 @@ export class SignInComponent implements OnInit {
   }
 
   signIn(event, email: string, password: string): void {
+    this.loading = true;
     event.preventDefault();
 
     this.authService.login(email, password)
@@ -35,6 +37,7 @@ export class SignInComponent implements OnInit {
             alert(error.text());
             console.error(error.text());
         });
+    this.loading = false;
   }
 
   forget(event): void {

@@ -6,6 +6,8 @@ import { MockBackend, MockConnection }                        from '@angular/htt
 
 import { AuthService } from './auth.service.ts';
 
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ';
+
 describe('Service: Authentication', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -26,7 +28,7 @@ describe('Service: Authentication', () => {
             new ResponseOptions( {
                 status: 200,
                 body: {
-                  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ'
+                  jwt: token
                 }
             })));
         });
@@ -46,7 +48,7 @@ describe('Service: Authentication', () => {
             new ResponseOptions( {
                 status: 200
             })));
-        });
+      });
 
       authService.login('wrong_email', 'wrong_password').subscribe((result) => {
         expect(result).toBe(false);
@@ -60,4 +62,58 @@ describe('Service: Authentication', () => {
       authService.logout();
       expect(localStorage.getItem('id_token')).toBe(null);
   }));
+
+  it('should return true if user have been created',
+    inject([XHRBackend, AuthService], (mockBackend, authService) => {
+
+      mockBackend.connections.subscribe(
+        (connection: MockConnection) => {
+          connection.mockRespond(new Response(
+            new ResponseOptions( {
+              status: 201
+            })));
+      });
+
+      let credentials = {
+        credentials: {
+          email: 'right_email',
+          firstname: 'firstname',
+          lastname: 'lastname',
+          password: 'right_pass',
+          confirmation: 'right_pass'
+        }
+      };
+
+      authService.register(credentials).subscribe((result) => {
+        expect(result).toBe(true);
+      });
+    })
+  );
+
+  it('should return false otherwise',
+    inject([XHRBackend, AuthService], (mockBackend, authService) => {
+
+      mockBackend.connections.subscribe(
+        (connection: MockConnection) => {
+          connection.mockRespond(new Response(
+            new ResponseOptions({
+              status: 401
+            })));
+        });
+
+      let credentials = {
+        credentials: {
+          email: 'right_email',
+          firstname: 'firstname',
+          lastname: 'lastname',
+          password: 'right_pass',
+          confirmation: 'right_pass'
+        }
+      };
+
+      authService.register(credentials).subscribe((result) => {
+        expect(result).toBe(false);
+      });
+    })
+  );
 });

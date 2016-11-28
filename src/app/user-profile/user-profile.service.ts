@@ -16,8 +16,7 @@ export class UserProfileService {
   getShortProfile(): Observable<UserProfile> {
     return this.authHttp.get(getShortProfileUrl)
       .map((response: Response) => {
-        let userProfile = response.json();
-        return userProfile;
+        return response.json();
       });
   }
 }

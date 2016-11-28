@@ -1,20 +1,14 @@
-import { BaseRequestOptions } from "@angular/http";
-import { CommonModule }       from '@angular/common';
-import { FormsModule }        from "@angular/forms";
-import { MaterialModule }     from '@angular/material';
-import { MockBackend }        from "@angular/http/testing";
-import { NgModule }           from '@angular/core';
+import { CommonModule }   from '@angular/common';
+import { FormsModule }    from '@angular/forms';
+import { MaterialModule } from '@angular/material';
+import { NgModule }       from '@angular/core';
 
-import { AuthGuard }           from "./auth.guard";
-import { AuthRoutingModule }   from "./auth-routing.module";
-import { AuthService }         from './auth.service';
-import { fakeBackendProvider } from "./fake-backend.provider";
-import { LoginComponent }      from './login';
-import { SignInComponent }     from './sign-in';
-import { SignUpComponent }     from './sign-up';
-import { SuccessSignUpComponent } from './success-sign-up/success-sign-up.component';
-
-// imports for mocking back-end
+import { AuthGuard }         from './auth.guard';
+import { AuthRoutingModule } from './auth-routing.module';
+import { AuthService }       from './auth.service';
+import { LoginComponent }    from './login';
+import { SignInComponent }   from './sign-in';
+import { SignUpComponent }   from './sign-up';
 
 
 @NgModule({
@@ -28,16 +22,10 @@ import { SuccessSignUpComponent } from './success-sign-up/success-sign-up.compon
     LoginComponent,
     SignInComponent,
     SignUpComponent,
-    SuccessSignUpComponent
   ],
   providers: [
     AuthService,
-    AuthGuard,
-
-    // providers used to create fake backend
-    fakeBackendProvider,
-    MockBackend,
-    BaseRequestOptions
+    AuthGuard
   ]
 })
 export class AuthModule { }

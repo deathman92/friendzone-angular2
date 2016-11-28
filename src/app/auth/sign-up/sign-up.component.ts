@@ -21,12 +21,15 @@ export class SignUpComponent implements OnInit {
   signUp(event): void {
     event.preventDefault();
 
-    this.authService.register(this.credentials)
-      .subscribe((res) => {
-        if (res === true) {
-          this.router.navigate(['/success']);
-        }
-      });
+    this.authService.register(this.credentials).subscribe((registerRes) => {
+      if (registerRes === true) {
+        this.authService.login(this.credentials.email, this.credentials.password).subscribe((loginRes) => {
+          if (loginRes === true) {
+            this.router.navigate(['/userprofile']);
+          }
+        });
+      }
+    });
   }
 }
 

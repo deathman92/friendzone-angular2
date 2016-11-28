@@ -1,4 +1,5 @@
-/* tslint:disable:no-unused-variable */
+/*
+/!* tslint:disable:no-unused-variable *!/
 
 import { TestBed, async, inject } from '@angular/core/testing';
 import { UserProfileService } from './user-profile.service';
@@ -14,3 +15,4 @@ describe('Service: UserProfile', () => {
     expect(service).toBeTruthy();
   }));
 });
+*/
