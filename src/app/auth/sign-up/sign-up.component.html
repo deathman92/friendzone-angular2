@@ -4,14 +4,19 @@
     <md-card-subtitle style="width: 100%; text-align: center;">Sign up now!</md-card-subtitle>
   </md-card-title-group>
   <md-card-content>
-    <form role="form">
+    <form role="form" (ngSubmit)="signUp($event)" #registerForm="ngForm">
       <div style="display: flex; flex-direction: column;">
-        <md-input placeholder="Email" name="email" [(ngModel)]="credentials.email" class="fz-input"></md-input>
-        <md-input placeholder="First name" name="firstname" [(ngModel)]="credentials.firstname" class="fz-input"></md-input>
-        <md-input placeholder="Last name" name="lastname" [(ngModel)]="credentials.lastname" class="fz-input"></md-input>
-        <md-input placeholder="Password" type="password" name="password" [(ngModel)]="credentials.password" class="fz-input"></md-input>
-        <md-input placeholder="Confirm password" type="password" name="confirmation" [(ngModel)]="credentials.confirmation" class="fz-input"></md-input>
-        <button md-raised-button class="md-primary" (click)="signUp($event)" style="text-transform: uppercase">Sign Up</button>
+        <md-input placeholder="Email" #email="ngModel" name="email" type="email" [(ngModel)]="credentials.email" dividerColor="{{email.dirty && !email.valid ? 'warn' : 'primary'}}" class="fz-input" fzEmail required>
+          <md-hint *ngIf="email.dirty && !email.valid">
+            <span *ngIf="email.errors?.required">Email should be filled!</span>
+            <span *ngIf="email.errors?.email">Invalid email string</span>
+          </md-hint>
+        </md-input>
+        <md-input placeholder="First name" #firstname="ngModel" name="firstname" [(ngModel)]="credentials.firstname" dividerColor="{{firstname.dirty && !firstname.valid ? 'warn' : 'primary'}}" class="fz-input" required></md-input>
+        <md-input placeholder="Last name" #lastname="ngModel" name="lastname" [(ngModel)]="credentials.lastname" dividerColor="{{lastname.dirty && !lastname.valid ? 'warn' : 'primary'}}" class="fz-input" required></md-input>
+        <md-input placeholder="Password" #password="ngModel" type="password" name="password" [(ngModel)]="credentials.password" dividerColor="{{password.dirty && !password.valid ? 'warn' : 'primary'}}" class="fz-input" required></md-input>
+        <md-input placeholder="Confirm password" #conirmation="ngModel" type="password" name="confirmation" [(ngModel)]="credentials.confirmation" dividerColor="{{conirmation.dirty && !conirmation.valid ? 'warn' : 'primary'}}" class="fz-input" required></md-input>
+        <button md-raised-button class="md-primary" type="submit" [disabled]="!registerForm.form.valid" style="text-transform: uppercase">Sign Up</button>
       </div>
     </form>
   </md-card-content>

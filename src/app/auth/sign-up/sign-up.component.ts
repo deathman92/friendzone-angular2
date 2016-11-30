@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router }            from '@angular/router';
 
-import { AuthService }       from '../auth.service';
+import { AuthService }    from '../auth.service';
+import { EmailDirective } from '../../shared/email.directive';
+
 
 @Component({
   selector: 'fz-sign-up',
@@ -26,7 +28,7 @@ export class SignUpComponent implements OnInit {
       if (registerRes === true) {
         this.authService.login(this.credentials.email, this.credentials.password).subscribe((loginRes) => {
           if (loginRes === true) {
-            this.router.navigateByUrl('/userprofile');
+            //this.router.navigateByUrl('/userprofile');
           }
         });
       }
@@ -41,3 +43,5 @@ class Credentials {
   password: string;
   confirmation: string;
 }
+
+

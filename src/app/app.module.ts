@@ -12,12 +12,14 @@ import { AppRoutingModule }  from './app-routing.module';
 
 // imports for mocking back-end
 import { fakeBackendProvider } from './mock';
-import { BaseRequestOptions }      from '@angular/http';
-import { MockBackend }             from '@angular/http/testing';
+import { BaseRequestOptions }  from '@angular/http';
+import { MockBackend }         from '@angular/http/testing';
+import { EmailDirective }      from './shared';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EmailDirective
   ],
   imports: [
     AuthModule,
