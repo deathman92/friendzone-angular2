@@ -1,6 +1,7 @@
 import { Component, OnInit }  from '@angular/core';
 import { ActivatedRoute }     from '@angular/router'
 import { UserProfileService } from './user-profile.service';
+import { AuthService } from '../auth/auth.service';
 
 const default_logo_path = '../../assets/img/default_logo.jpg';
 
@@ -12,40 +13,48 @@ const default_logo_path = '../../assets/img/default_logo.jpg';
 export class UserProfileComponent implements OnInit {
   public logourl: string;
   public currentUser: boolean;
+  public isFriend: boolean;
   public wallposts: any;
-  public userProfile = {
-    id: null,
-    firstname: '',
-    lastname: '',
-    photourl: ''
-  };
+  public userProfile: any;
 
   constructor(
     private userProfileService: UserProfileService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
     this.getUserProfile();
-    this.activatedRoute.params.subscribe(
-      params => {
-        this.currentUser = !params['id'];
+  }
+
+  addToFriend(): void {
+    this.userProfileService.addToFriends(this.userProfile.id).subscribe(
+      result => {
+        if (result) {
+          this.getUserProfile();
+        }
       }
-    )
+    );
   }
 
   private getUserProfile(): void {
-    this.userProfileService.getShortProfile().subscribe(
-      shortprofile => {
-        this.userProfile = shortprofile;
-        this.logourl = this.userProfile.photourl ? this.userProfile.photourl : default_logo_path;
-        this.getWallposts();
-      },
-      error => {
-        // TODO: error logic here;
-        console.log('something went wrong');
+    this.activatedRoute.params.subscribe(
+      params => {
+        this.userProfileService.getShortProfile(params['id']).subscribe(
+          shortprofile => {
+            this.userProfile = shortprofile;
+            this.currentUser = this.authService.isCurrentUser(shortprofile.id);
+            this.logourl = this.userProfile.photourl ? this.userProfile.photourl : default_logo_path;
+            this.getWallposts();
+          },
+          error => {
+            // TODO: error logic here;
+            console.log('something went wrong');
+          }
+        );
       }
     );
+
   }
 
   private getWallposts() {

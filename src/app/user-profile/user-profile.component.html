@@ -2,16 +2,18 @@
   <div>
     <md-card style="padding: 20px; margin: 20px">
       <md-card-content style="display: flex; flex-direction: column;">
-        <img src="{{logourl}}"/>
+        <img src="{{logourl}}" style="max-width: 250px;"/>
         <button *ngIf="currentUser" class="md-primary" style="margin-top: 20px;" [disabled]="true" md-raised-button>Edit</button>
-        <button *ngIf="!currentUser" class="md-primary" style="margin-top: 20px;" md-raised-button>Add to friends</button>
+        <button *ngIf="!currentUser && userProfile?.status === 0" class="md-primary" (click)="addToFriend()" style="margin-top: 20px;" md-raised-button>Add to friends</button>
+        <button *ngIf="!currentUser && userProfile?.status === 1" class="md-primary" style="margin-top: 20px;" [disabled]="true" md-raised-button>Wait for answer</button>
+        <button *ngIf="!currentUser && userProfile?.status === 2" class="md-primary" style="margin-top: 20px;" [disabled]="true" md-raised-button>Already in friends</button>
       </md-card-content>
     </md-card>
   </div>
   <div style="display: flex; flex-direction: column;">
     <md-card style="width: 450px; margin: 20px;">
       <md-card-title style="margin-bottom: 0;">
-        <span class="md-title">{{userProfile.firstname || uppercase}} {{userProfile.lastname || uppercase}}</span>
+        <span class="md-title">{{userProfile?.firstname | uppercase}} {{userProfile?.lastname | uppercase}}</span>
       </md-card-title>
       <md-card-content>
         <div style="height: 200px; display: none"></div>

@@ -1,7 +1,7 @@
 import { Http, Response }  from '@angular/http';
 import { Injectable }      from '@angular/core';
 import { Observable }      from 'rxjs';
-import { tokenNotExpired } from 'angular2-jwt';
+import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 
 const prefix = '/api';
@@ -11,6 +11,7 @@ const tokenName = 'id_token';
 
 @Injectable()
 export class AuthService {
+  jwtHelper: JwtHelper = new JwtHelper();
 
   constructor(private http: Http) {}
 
@@ -32,6 +33,10 @@ export class AuthService {
       .map((response: Response) => {
         return (response.status === 201);
       });
+  }
+
+  isCurrentUser(id:number):boolean {
+    return this.jwtHelper.decodeToken(localStorage.getItem(tokenName)).sub === id;
   }
 
   logout(): void {

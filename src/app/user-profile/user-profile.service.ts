@@ -10,14 +10,15 @@ const prefix = '/api';
 const getShortProfileUrl = prefix + '/shortprofile';
 const getWallpostsUrl = prefix + '/wallpost/';
 const addWallpost = prefix + '/wallpost';
+const addToFriends = prefix + '/friends';
 
 @Injectable()
 export class UserProfileService {
 
   constructor(private authHttp: AuthHttp) { }
 
-  getShortProfile(): Observable<UserProfile> {
-    return this.authHttp.get(getShortProfileUrl)
+  getShortProfile(id:string): Observable<UserProfile> {
+    return this.authHttp.get(getShortProfileUrl + (id ? '/' + id : ''))
       .map((response: Response) => {
         return response.json();
       });
@@ -36,5 +37,13 @@ export class UserProfileService {
         return response.json();
       }
     )
+  }
+
+  addToFriends(userId: string): Observable<boolean> {
+    return this.authHttp.post(addToFriends, {id: userId})
+      .map((response:Response) => {
+          return response.status === 200;
+        }
+      );
   }
 }
