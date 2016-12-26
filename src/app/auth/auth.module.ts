@@ -1,7 +1,8 @@
-import { CommonModule }   from '@angular/common';
-import { FormsModule }    from '@angular/forms';
-import { MaterialModule } from '@angular/material';
-import { NgModule }       from '@angular/core';
+import { CommonModule }      from '@angular/common';
+import { FormsModule }       from '@angular/forms';
+import { MaterialModule }    from '@angular/material';
+import { Ng2MaterialModule } from 'ng2-material';
+import { NgModule }          from '@angular/core';
 
 import { AuthGuard }         from './auth.guard';
 import { AuthRoutingModule } from './auth-routing.module';
@@ -16,6 +17,7 @@ import { SignUpComponent }   from './sign-up';
     AuthRoutingModule,
     CommonModule,
     FormsModule,
+    Ng2MaterialModule,
     MaterialModule
   ],
   declarations: [

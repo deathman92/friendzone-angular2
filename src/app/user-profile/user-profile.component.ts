@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit }  from '@angular/core';
+import { ActivatedRoute }     from '@angular/router'
 import { UserProfileService } from './user-profile.service';
+
+const default_logo_path = '../../assets/img/default_logo.jpg';
 
 @Component({
   selector: 'fz-app-user-profile',
@@ -7,22 +10,36 @@ import { UserProfileService } from './user-profile.service';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
+  public logourl: string;
+  public currentUser: boolean;
+  public wallposts: any;
   public userProfile = {
-    firstname: 'comp',
-    lastname: 'comp',
-    fotourl: null
+    id: null,
+    firstname: '',
+    lastname: '',
+    photourl: ''
   };
 
-  constructor(private userProfileService: UserProfileService) { }
+  constructor(
+    private userProfileService: UserProfileService,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     this.getUserProfile();
+    this.activatedRoute.params.subscribe(
+      params => {
+        this.currentUser = !params['id'];
+      }
+    )
   }
 
   private getUserProfile(): void {
     this.userProfileService.getShortProfile().subscribe(
       shortprofile => {
         this.userProfile = shortprofile;
+        this.logourl = this.userProfile.photourl ? this.userProfile.photourl : default_logo_path;
+        this.getWallposts();
       },
       error => {
         // TODO: error logic here;
@@ -31,4 +48,11 @@ export class UserProfileComponent implements OnInit {
     );
   }
 
+  private getWallposts() {
+    this.userProfileService.getWallposts(this.userProfile.id).subscribe(
+      wallposts => {
+        this.wallposts = wallposts;
+      }
+    )
+  }
 }

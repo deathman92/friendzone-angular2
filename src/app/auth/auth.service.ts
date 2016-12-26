@@ -14,8 +14,8 @@ export class AuthService {
 
   constructor(private http: Http) {}
 
-  login(email, password): Observable<boolean> {
-    return this.http.post(loginUrl, { auth: { email: email, password: password } })
+  login(auth): Observable<boolean> {
+    return this.http.post(loginUrl, { auth: auth })
       .map((response: Response) => {
         let token = response.json() && response.json().jwt;
         if (token) {

@@ -4,6 +4,7 @@ import { BrowserModule }     from '@angular/platform-browser';
 import { FormsModule }       from '@angular/forms';
 import { HttpModule }        from '@angular/http';
 import { MaterialModule }    from '@angular/material';
+import { Ng2MaterialModule } from 'ng2-material';
 import { NgModule }          from '@angular/core';
 import { UserProfileModule } from './user-profile';
 
@@ -26,6 +27,7 @@ import { EmailDirective }      from './shared';
     BrowserModule,
     FormsModule,
     HttpModule,
+    Ng2MaterialModule.forRoot(),
     MaterialModule.forRoot(),
     AppRoutingModule,
     UserProfileModule
@@ -34,9 +36,9 @@ import { EmailDirective }      from './shared';
     AUTH_PROVIDERS,
 
     // providers used to create fake backend
-    fakeBackendProvider,
-    BaseRequestOptions,
-    MockBackend
+    // fakeBackendProvider,
+    // BaseRequestOptions,
+    // MockBackend
   ],
   bootstrap: [AppComponent]
 })

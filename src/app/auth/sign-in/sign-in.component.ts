@@ -10,6 +10,10 @@ import { AuthService } from '../auth.service';
 })
 export class SignInComponent implements OnInit {
   public loading = false;
+  public auth = {
+    email: "",
+    password: ""
+  };
 
   constructor(
     private authService: AuthService,
@@ -20,11 +24,11 @@ export class SignInComponent implements OnInit {
     this.authService.logout();
   }
 
-  signIn(event, email: string, password: string): void {
+  signIn(event): void {
+    event && event.preventDefault();
     this.loading = true;
-    event.preventDefault();
 
-    this.authService.login(email, password)
+    this.authService.login(this.auth)
       .subscribe(
         response => {
           if (response === true) {

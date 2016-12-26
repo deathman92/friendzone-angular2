@@ -1,0 +1,41 @@
+<div style="display: flex; flex-direction: column; margin: 20px;">
+
+  <div style="width: 100%; margin: 10px 0;">
+    <form role="form" (ngSubmit)="addPost($event)" #loginForm="ngForm">
+      <md-card>
+        <md-card-content>
+          <md-input-container style="width: 100%;">
+            <textarea md-input name="new_post_data" [(ngModel)]="new_post_data"
+                      style="resize: none" required
+                      placeholder="Enter new post text here...">
+            </textarea>
+          </md-input-container>
+        </md-card-content>
+        <md-card-actions>
+          <button md-button type="submit" [disabled]="!loginForm.form.valid">ADD</button>
+        </md-card-actions>
+      </md-card>
+    </form>
+  </div>
+
+  <div style="width: 100%; margin: 10px 0;" *ngFor="let post of wallposts">
+    <md-card>
+      <md-card-header>
+        <img md-card-avatar src="{{getLogoPath(post.short_profile.photourl)}}">
+        <md-card-title><span class="md-title">{{post.short_profile.firstname | uppercase}} {{post.short_profile.lastname | uppercase}}</span>
+        </md-card-title>
+        <md-card-subtitle><span class="md-subhead">{{post.created_at | date:'medium'}}</span></md-card-subtitle>
+      </md-card-header>
+      <md-card-content>
+        <p>{{post.text}}</p>
+      </md-card-content>
+    </md-card>
+  </div>
+  <div style="width: 100%; margin: 10px 0;" *ngIf="!(wallposts && wallposts.length)">
+    <md-card>
+      <md-card-content>
+        <span>You have no posts yet. Please, add the post</span>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>

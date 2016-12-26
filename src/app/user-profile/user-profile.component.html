@@ -1,10 +1,22 @@
 <div style="display: flex; justify-content: center">
-  <md-card style="padding: 0; margin: 20px;">
-    <md-toolbar class="md-primary" style="text-align: center;">
-      <span>HELLO, {{userProfile.firstname | uppercase}} {{userProfile.lastname | uppercase}}</span>
-    </md-toolbar>
-    <md-card-content>
-      <img src="../../assets/img/chewie-were-home.jpg"/>
-    </md-card-content>
-  </md-card>
+  <div>
+    <md-card style="padding: 20px; margin: 20px">
+      <md-card-content style="display: flex; flex-direction: column;">
+        <img src="{{logourl}}"/>
+        <button *ngIf="currentUser" class="md-primary" style="margin-top: 20px;" [disabled]="true" md-raised-button>Edit</button>
+        <button *ngIf="!currentUser" class="md-primary" style="margin-top: 20px;" md-raised-button>Add to friends</button>
+      </md-card-content>
+    </md-card>
+  </div>
+  <div style="display: flex; flex-direction: column;">
+    <md-card style="width: 450px; margin: 20px;">
+      <md-card-title style="margin-bottom: 0;">
+        <span class="md-title">{{userProfile.firstname || uppercase}} {{userProfile.lastname || uppercase}}</span>
+      </md-card-title>
+      <md-card-content>
+        <div style="height: 200px; display: none"></div>
+      </md-card-content>
+    </md-card>
+    <fz-wall [wallposts]="wallposts"></fz-wall>
+  </div>
 </div>

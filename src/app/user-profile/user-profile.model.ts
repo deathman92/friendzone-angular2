@@ -1,11 +1,13 @@
 export class UserProfile {
+  public id: number;
   public firstname: string;
   public lastname: string;
-  public fotourl: string;
+  public photourl: string;
 
-  constructor(firstname, lastname, fotourl) {
+  constructor(id, firstname, lastname, photourl) {
+    this.id = id;
     this.firstname = firstname;
     this.lastname = lastname;
-    this.fotourl = fotourl;
+    this.photourl = photourl;
   }
 }

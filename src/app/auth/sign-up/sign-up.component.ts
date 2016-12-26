@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router }            from '@angular/router';
 
 import { AuthService }    from '../auth.service';
-import { EmailDirective } from '../../shared/email.directive';
 
 
 @Component({
@@ -26,9 +25,9 @@ export class SignUpComponent implements OnInit {
 
     this.authService.register(this.credentials).subscribe((registerRes) => {
       if (registerRes === true) {
-        this.authService.login(this.credentials.email, this.credentials.password).subscribe((loginRes) => {
+        this.authService.login({ email: this.credentials.email, password: this.credentials.password }).subscribe((loginRes) => {
           if (loginRes === true) {
-            //this.router.navigateByUrl('/userprofile');
+            this.router.navigateByUrl('/userprofile');
           }
         });
       }
