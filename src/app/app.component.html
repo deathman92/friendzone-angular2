@@ -1,10 +1,15 @@
-<md-toolbar class="fz-header">
+<md-toolbar class="fz-header" [ngClass]="{'fz-logged-in': isLoggedIn}">
   <!-- figure out it later
   <div style="background-color: white; width: 300px; height: auto;">
     There will be logo
   </div>-->
 
-  {{title}}
+  <span *ngIf="!isLoggedIn">{{title}}</span>
+  <div style="display: flex; flex-direction: row; flex-grow: 1; margin-right: 20px;" *ngIf="isLoggedIn">
+    <fz-user-search></fz-user-search>
+  </div>
+  <button md-button *ngIf="isLoggedIn" (click)="goHome()" style="margin-right: 20px;">Home</button>
+  <button md-button *ngIf="isLoggedIn" (click)="logout()" style="margin-right: 360px;">Logout</button>
 
   <!--<span class="app-toolbar-filler"></span>-->
 </md-toolbar>

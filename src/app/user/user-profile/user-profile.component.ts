@@ -1,14 +1,14 @@
-import { Component, OnInit }  from '@angular/core';
 import { ActivatedRoute }     from '@angular/router'
-import { UserProfileService } from './user-profile.service';
-import { AuthService } from '../auth/auth.service';
+import { AuthService }        from '../../auth';
+import { Component, OnInit }  from '@angular/core';
+import { UserProfileService } from '../user-profile.service';
 
 const default_logo_path = '../../assets/img/default_logo.jpg';
 
 @Component({
   selector: 'fz-app-user-profile',
-  templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss']
+  templateUrl: 'user-profile.component.html',
+  styleUrls: ['user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
   public logourl: string;

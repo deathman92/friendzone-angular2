@@ -1,0 +1,47 @@
+<div style="display: flex; justify-content: center;">
+  <md-card class="fz-friend-list">
+    <md-card-content>
+      <md-tab-group [selectedIndex]="0">
+        <md-tab label="Friends">
+          <md-list>
+            <md-list-item *ngFor="let friend of friends">
+              <img md-list-avatar src="{{getLogoPath(friend.photourl)}}">
+              <a md-line routerLink="/userprofile/{{friend.id}}">
+                {{friend.firstname | uppercase}} {{friend.lastname | uppercase}}
+              </a>
+            </md-list-item>
+          </md-list>
+          <div style="width: 100%; margin: 10px 0;" *ngIf="!(friends && friends.length)">
+            <span>You have no friends.</span>
+          </div>
+        </md-tab>
+        <md-tab label="Input requests">
+          <md-list>
+            <md-list-item *ngFor="let subscriber of subscribers">
+              <img md-list-avatar src="{{getLogoPath(subscriber.photourl)}}">
+              <a md-line routerLink="/userprofile/{{subscriber.id}}">
+                  {{subscriber.firstname | uppercase}} {{subscriber.lastname | uppercase}}
+              </a>
+            </md-list-item>
+          </md-list>
+          <div style="width: 100%; margin: 10px 0;" *ngIf="!(subscribers && subscribers.length)">
+            <span>You even have no subscribers.</span>
+          </div>
+        </md-tab>
+        <md-tab label="Output requests">
+          <md-list>
+            <md-list-item *ngFor="let subscription of subscriptions">
+              <img md-list-avatar src="{{getLogoPath(subscription.photourl)}}">
+              <a md-line routerLink="/userprofile/{{subscription.id}}">
+                {{subscription.firstname | uppercase}} {{subscription.lastname | uppercase}}
+              </a>
+            </md-list-item>
+          </md-list>
+          <div style="width: 100%; margin: 10px 0;" *ngIf="!(subscriptions && subscriptions.length)">
+            <span>You even have no subscriptions.</span>
+          </div>
+        </md-tab>
+      </md-tab-group>
+    </md-card-content>
+  </md-card>
+</div>

@@ -1,0 +1,19 @@
+<div>
+  <md-input-container>
+    <input placeholder="Search..." md-input name="search" [(ngModel)]="term" id="search-box" (keyup)="search(term)" (blur)="term = null; search(term);"/>
+  </md-input-container>
+  <div style="position: absolute; z-index: 10; max-width: 245px;">
+    <md-card style="margin: 0; padding: 0;">
+      <md-card-content>
+        <md-list>
+          <md-list-item *ngFor="let user of users | async">
+            <img md-list-avatar src="{{getLogoPath(user.photourl)}}">
+            <a md-line routerLink="/userprofile/{{user.id}}">
+              {{user.firstname | uppercase}} {{user.lastname | uppercase}}
+            </a>
+          </md-list-item>
+        </md-list>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>

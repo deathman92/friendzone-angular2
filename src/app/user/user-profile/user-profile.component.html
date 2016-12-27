@@ -9,6 +9,7 @@
         <button *ngIf="!currentUser && userProfile?.status === 2" class="md-primary" style="margin-top: 20px;" [disabled]="true" md-raised-button>Already in friends</button>
       </md-card-content>
     </md-card>
+    <fz-user-menu *ngIf="currentUser"></fz-user-menu>
   </div>
   <div style="display: flex; flex-direction: column;">
     <md-card style="width: 450px; margin: 20px;">

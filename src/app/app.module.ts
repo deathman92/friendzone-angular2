@@ -1,15 +1,15 @@
 import { AUTH_PROVIDERS }    from 'angular2-jwt';
-import { AuthModule }        from './auth';
 import { BrowserModule }     from '@angular/platform-browser';
 import { FormsModule }       from '@angular/forms';
 import { HttpModule }        from '@angular/http';
 import { MaterialModule }    from '@angular/material';
 import { Ng2MaterialModule } from 'ng2-material';
 import { NgModule }          from '@angular/core';
-import { UserProfileModule } from './user-profile';
 
 import { AppComponent }      from './app.component';
 import { AppRoutingModule }  from './app-routing.module';
+import { AuthModule }        from './auth';
+import { UserProfileModule } from './user';
 
 // imports for mocking back-end
 import { fakeBackendProvider } from './mock';

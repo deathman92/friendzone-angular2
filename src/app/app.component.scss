@@ -5,6 +5,10 @@
   background: md-color($primary, 700);
   color: md-contrast($primary, 700);
 
+  &.fz-logged-in {
+    flex-direction: row-reverse;
+  }
+
   .app-toolbar-filler {
     flex: 1 1 auto;
   }
